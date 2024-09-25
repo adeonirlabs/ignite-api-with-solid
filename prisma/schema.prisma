@@ -11,8 +11,37 @@ model User {
   id        String   @id @default(cuid())
   name      String
   email     String   @unique
+  password  String
   createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+
+  CheckIns CheckIn[]
 
   @@map("users")
+}
+
+model Gym {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  phone       String?
+  latitude    Decimal
+  longitude   Decimal
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  CheckIns CheckIn[]
+
+  @@map("gyms")
+}
+
+model CheckIn {
+  id          String    @id @default(cuid())
+  userId      String
+  gymId       String
+  validatedAt DateTime? @map("validated_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+  gym  Gym  @relation(fields: [gymId], references: [id])
+
+  @@map("check_ins")
 }
