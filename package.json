@@ -8,9 +8,12 @@
     "dev": "bun --watch run src/server.ts",
     "build": "tsup",
     "start": "node dist/server.js",
-    "lint": "biome check src"
+    "lint": "biome check src",
+    "migrate": "prisma migrate dev",
+    "studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "5.20.0",
     "fastify": "5.0.0",
     "zod": "3.23.8"
   },
@@ -19,8 +22,12 @@
     "@tsconfig/node22": "22.0.0",
     "@types/bun": "1.1.10",
     "@types/node": "22.7.0",
+    "prisma": "5.20.0",
     "tsup": "8.3.0",
     "typescript": "5.6.2"
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
   },
   "engines": {
     "node": ">= 20"

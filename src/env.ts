@@ -4,6 +4,7 @@ import { z } from 'zod'
 
 export const envSchema = z.object({
   BASE_URL: z.string().url(),
+  DATABASE_URL: z.string().url(),
   HOST: z.string().default('0.0.0.0'),
   PORT: z.coerce.number().default(3333),
 })
