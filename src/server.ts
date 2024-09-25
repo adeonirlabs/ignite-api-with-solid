@@ -1,10 +1,11 @@
 import { app } from '~/app.ts'
+import { env } from '~/env.ts'
 
 app
   .listen({
-    host: '0.0.0.0',
-    port: 3333,
+    host: env.HOST,
+    port: env.PORT,
   })
   .then(() => {
-    console.log('Server running on http://localhost:3333')
+    console.log(`Server running on ${env.BASE_URL}`)
   })
