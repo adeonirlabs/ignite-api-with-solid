@@ -13,8 +13,9 @@ Este é um projeto de uma Rest API desenvolvido durante o Ignite da Rocketseat, 
 - Bun
 - TypeScript
 - Fastify
-- PostgreSQL
 - Prisma
+- PostgreSQL
+- Docker
 - JWT
 - Biome
 - Zod
