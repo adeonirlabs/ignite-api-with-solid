@@ -2,10 +2,15 @@
   "extends": "@tsconfig/node22/tsconfig.json",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "noEmit": true,
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["*"]
     }
-  }
+  },
+  "include": ["src/**/*.ts"]
 }
