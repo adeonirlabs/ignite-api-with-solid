@@ -3,6 +3,9 @@ import 'dotenv/config'
 import { z } from 'zod'
 
 export const envSchema = z.object({
+  NODE_ENV: z
+    .enum(['development', 'production', 'test'])
+    .default('development'),
   BASE_URL: z.string().url(),
   DATABASE_URL: z.string().url(),
   HOST: z.string().default('0.0.0.0'),
