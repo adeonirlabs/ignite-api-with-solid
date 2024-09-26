@@ -1,10 +1,11 @@
 import { hash } from 'bcryptjs'
 
+import type { CreateUserDTO } from '~/features/user/dtos/create-user.dto'
+import { UserRepository } from '~/features/user/repositories/user.repository'
 import { prisma } from '~/shared/services/database'
 
-import type { CreateUserDTO } from '../dtos/create-user.dto'
-
 export async function createUser(data: CreateUserDTO) {
+  const userRepository = new UserRepository()
   const { name, email, password } = data
 
   const userAlreadyExists = await prisma.user.findUnique({
@@ -19,11 +20,11 @@ export async function createUser(data: CreateUserDTO) {
 
   const hashedPassword = await hash(password, 8)
 
-  await prisma.user.create({
-    data: {
-      name,
-      email,
-      password: hashedPassword,
-    },
+  const user = await userRepository.create({
+    name,
+    email,
+    password: hashedPassword,
   })
+
+  return user
 }
