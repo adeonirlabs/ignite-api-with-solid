@@ -8,6 +8,7 @@
     "build": "tsup",
     "start": "node dist/server.js",
     "lint": "biome check src",
+    "typecheck": "tsc --noEmit",
     "migrate": "prisma migrate dev",
     "studio": "prisma studio"
   },

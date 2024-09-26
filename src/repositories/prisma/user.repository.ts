@@ -1,7 +1,9 @@
-import type { CreateUserDTO } from '~/features/user/dtos/create-user.dto'
+import type { Prisma } from '@prisma/client'
+
+import type { UserRepository } from '~/repositories/interfaces/user-repository'
 import { prisma } from '~/shared/services/database'
 
-export class UserRepository {
+export class PrismaUserRepository implements UserRepository {
   async findByEmail(email: string) {
     const user = await prisma.user.findUnique({
       where: {
@@ -12,7 +14,7 @@ export class UserRepository {
     return user
   }
 
-  async create(data: CreateUserDTO) {
+  async create(data: Prisma.UserCreateInput) {
     const user = await prisma.user.create({
       data,
     })

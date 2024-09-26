@@ -1,7 +1,7 @@
 import { hash } from 'bcryptjs'
 
 import type { CreateUserDTO } from '~/features/user/dtos/create-user.dto'
-import type { UserRepository } from '~/features/user/repositories/user.repository'
+import type { UserRepository } from '~/repositories/interfaces/user-repository'
 
 export class CreateUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
