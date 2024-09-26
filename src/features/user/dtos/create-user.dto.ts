@@ -1,5 +1,3 @@
-export interface CreateUserDTO {
-  name: string
-  email: string
-  password: string
-}
+import type { Prisma } from '@prisma/client'
+
+export type CreateUserDTO = Prisma.UserCreateInput
