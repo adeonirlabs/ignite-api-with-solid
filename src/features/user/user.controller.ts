@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
-import { prisma } from '~/shared/services/database'
+import { createUser } from './use-cases/create-user.usecase'
 
 const createUserSchema = z.object({
   name: z.string(),
@@ -10,17 +10,15 @@ const createUserSchema = z.object({
 })
 
 export class UserController {
-  async create(req: FastifyRequest, res: FastifyReply) {
-    const { name, email, password } = createUserSchema.parse(req.body)
+  async create(request: FastifyRequest, reply: FastifyReply) {
+    const { name, email, password } = createUserSchema.parse(request.body)
 
-    await prisma.user.create({
-      data: {
-        name,
-        email,
-        password,
-      },
-    })
+    try {
+      await createUser({ name, email, password })
+    } catch (error) {
+      return reply.status(409).send({ message: (error as Error).message })
+    }
 
-    return res.status(201).send()
+    return reply.status(201).send()
   }
 }
