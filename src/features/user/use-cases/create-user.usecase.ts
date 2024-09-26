@@ -2,6 +2,7 @@ import { hash } from 'bcryptjs'
 
 import type { CreateUserDTO } from '~/features/user/dtos/create-user.dto'
 import type { UserRepository } from '~/repositories/interfaces/user-repository'
+import { ConflictError } from '~/shared/errors/conflict.error'
 
 export class CreateUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
@@ -12,7 +13,7 @@ export class CreateUserUseCase {
     const userAlreadyExists = await this.userRepository.findByEmail(email)
 
     if (userAlreadyExists) {
-      throw new Error('User already exists')
+      throw new ConflictError('User already exists')
     }
 
     const hashedPassword = await hash(password, 8)
