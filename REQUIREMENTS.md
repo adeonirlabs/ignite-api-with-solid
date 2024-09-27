@@ -1,6 +1,6 @@
 # Requisitos funcionais
 
-- [ ] Deve ser possível criar uma conta
+- [x] Deve ser possível criar uma conta
 - [ ] Deve ser possível se autenticar
 - [ ] Deve ser possível visualizar o perfil de um usuário
 - [ ] Deve ser possível obter o número total de check-ins
@@ -13,16 +13,16 @@
 
 # Regras de negócio
 
-- O usuário não pode se cadastrar com um e-mail já existente
-- O usuário não pode fazer 2 check-ins no mesmo dia
-- O usuário não pode fazer check-in se não estiver a 100 metros da academia
-- O check-in só pode ser validado até 20 minutos após ser criado
-- O check-in só pode ser validado por um administrador
-- A academia só pode ser cadastrada por um usuário administrador
+- [x] O usuário não pode se cadastrar com um e-mail já existente
+- [ ] O usuário não pode fazer 2 check-ins no mesmo dia
+- [ ] O usuário não pode fazer check-in se não estiver a 100 metros da academia
+- [ ] O check-in só pode ser validado até 20 minutos após ser criado
+- [ ] O check-in só pode ser validado por um administrador
+- [ ] A academia só pode ser cadastrada por um usuário administrador
 
 # Requisitos não funcionais
 
-- [ ] A senha do usuário precisa estar criptografada
-- [ ] Os dados da aplicação precisam estar persistidos em um banco de dados PostgreSQL
+- [x] A senha do usuário precisa estar criptografada
+- [x] Os dados da aplicação precisam estar persistidos em um banco de dados
 - [ ] Todas as listas de dados precisam estar paginadas com 20 itens por página
-- [ ] O usuário deve ser identificado pelo JWT
+- [ ] O usuário deve ser identificado pelo token
