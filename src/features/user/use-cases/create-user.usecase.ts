@@ -1,13 +1,13 @@
 import { hash } from 'bcryptjs'
 
-import type { CreateUserDTO } from '~/features/user/dtos/create-user.dto'
+import type { CreateUserRequest } from '~/features/user/dtos/create-user.dto'
 import type { UserRepository } from '~/repositories/interfaces/user-repository'
 import { ConflictError } from '~/shared/errors/conflict.error'
 
 export class CreateUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async execute(data: CreateUserDTO) {
+  async execute(data: CreateUserRequest) {
     const { name, email, password } = data
 
     const userAlreadyExists = await this.userRepository.findByEmail(email)
@@ -24,6 +24,6 @@ export class CreateUserUseCase {
       password: hashedPassword,
     })
 
-    return user
+    return { user }
   }
 }
