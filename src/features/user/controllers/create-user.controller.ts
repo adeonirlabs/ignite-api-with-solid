@@ -5,7 +5,7 @@ import { CreateUserUseCase } from '~/features/user/use-cases/create-user.usecase
 import { PrismaUserRepository } from '~/repositories/prisma/user.repository'
 import { ConflictError } from '~/shared/errors/conflict.error'
 
-export class UserController {
+export class CreateUserController {
   async create(request: FastifyRequest, reply: FastifyReply) {
     const userRepository = new PrismaUserRepository()
     const createUserUseCase = new CreateUserUseCase(userRepository)
