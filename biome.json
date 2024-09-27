@@ -44,7 +44,8 @@
         "noVar": "error",
         "useConst": "error",
         "noArguments": "error",
-        "noNonNullAssertion":"off"
+        "noNonNullAssertion": "off",
+        "useNodejsImportProtocol": "off"
       }
     }
   },
