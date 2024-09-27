@@ -2,7 +2,7 @@ import { describe, expect, it } from 'bun:test'
 import { compare } from 'bcryptjs'
 
 import { CreateUserUseCase } from '~/features/user/use-cases/create-user.usecase'
-import { InMemoryUserRepository } from '~/repositories/in-memory/users.repository'
+import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository'
 import { ConflictError } from '~/shared/errors/conflict.error'
 
 describe('Create User Use Case', () => {
