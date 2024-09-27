@@ -6,6 +6,19 @@ import { InMemoryUserRepository } from '~/repositories/in-memory/users.repositor
 import { ConflictError } from '~/shared/errors/conflict.error'
 
 describe('Create User Use Case', () => {
+  it('should be able to create a user', async () => {
+    const inMemoryUserRepository = new InMemoryUserRepository()
+    const createUserUseCase = new CreateUserUseCase(inMemoryUserRepository)
+
+    const { user } = await createUserUseCase.execute({
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      password: '123456',
+    })
+
+    expect(user.id).toEqual(expect.any(String))
+  })
+
   it('should create a hashed password', async () => {
     const inMemoryUserRepository = new InMemoryUserRepository()
     const createUserUseCase = new CreateUserUseCase(inMemoryUserRepository)
