@@ -3,6 +3,7 @@ import { compare } from 'bcryptjs'
 
 import { CreateUserUseCase } from '~/features/user/use-cases/create-user.usecase'
 import { InMemoryUserRepository } from '~/repositories/in-memory/users.repository'
+import { ConflictError } from '~/shared/errors/conflict.error'
 
 describe('Create User Use Case', () => {
   it('should create a hashed password', async () => {
@@ -18,5 +19,26 @@ describe('Create User Use Case', () => {
     const isHashed = await compare('123456', user.password)
 
     expect(isHashed).toBe(true)
+  })
+
+  it('should not be able to create a user with an existing email', async () => {
+    const inMemoryUserRepository = new InMemoryUserRepository()
+    const createUserUseCase = new CreateUserUseCase(inMemoryUserRepository)
+
+    const email = 'john.doe@example.com'
+
+    await createUserUseCase.execute({
+      name: 'John Doe',
+      email,
+      password: '123456',
+    })
+
+    expect(
+      createUserUseCase.execute({
+        name: 'John Doe',
+        email,
+        password: '123456',
+      })
+    ).rejects.toBeInstanceOf(ConflictError)
   })
 })
