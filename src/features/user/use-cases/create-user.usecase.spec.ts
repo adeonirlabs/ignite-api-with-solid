@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'bun:test'
+import { beforeEach, describe, expect, it } from 'bun:test'
 import { compare } from 'bcryptjs'
 
 import { CreateUserUseCase } from '~/features/user/use-cases/create-user.usecase'
@@ -6,10 +6,15 @@ import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository
 import { ConflictError } from '~/shared/errors/conflict.error'
 
 describe('Create User Use Case', () => {
-  it('should be able to create a user', async () => {
-    const inMemoryUserRepository = new InMemoryUserRepository()
-    const createUserUseCase = new CreateUserUseCase(inMemoryUserRepository)
+  let userRepository: InMemoryUserRepository
+  let createUserUseCase: CreateUserUseCase
 
+  beforeEach(() => {
+    userRepository = new InMemoryUserRepository()
+    createUserUseCase = new CreateUserUseCase(userRepository)
+  })
+
+  it('should be able to create a user', async () => {
     const { user } = await createUserUseCase.execute({
       name: 'John Doe',
       email: 'john.doe@example.com',
@@ -20,9 +25,6 @@ describe('Create User Use Case', () => {
   })
 
   it('should create a hashed password', async () => {
-    const inMemoryUserRepository = new InMemoryUserRepository()
-    const createUserUseCase = new CreateUserUseCase(inMemoryUserRepository)
-
     const { user } = await createUserUseCase.execute({
       name: 'John Doe',
       email: 'john.doe@example.com',
@@ -35,9 +37,6 @@ describe('Create User Use Case', () => {
   })
 
   it('should not be able to create a user with an existing email', async () => {
-    const inMemoryUserRepository = new InMemoryUserRepository()
-    const createUserUseCase = new CreateUserUseCase(inMemoryUserRepository)
-
     const email = 'john.doe@example.com'
 
     await createUserUseCase.execute({
@@ -53,5 +52,19 @@ describe('Create User Use Case', () => {
         password: '123456',
       })
     ).rejects.toBeInstanceOf(ConflictError)
+  })
+
+  it('should be able to find a user by email', async () => {
+    const data = {
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      password: '123456',
+    }
+
+    await createUserUseCase.execute(data)
+
+    const user = await userRepository.findByEmail(data.email)
+
+    expect(user).not.toBeNull()
   })
 })
