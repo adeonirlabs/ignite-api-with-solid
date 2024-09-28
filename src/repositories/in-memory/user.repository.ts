@@ -6,6 +6,12 @@ import type { UserRepository } from '~/repositories/interfaces/user-repository'
 export class InMemoryUserRepository implements UserRepository {
   private users: User[] = []
 
+  async findById(id: string) {
+    const user = this.users.find((user) => user.id === id) ?? null
+
+    return user
+  }
+
   async findByEmail(email: string) {
     const user = this.users.find((user) => user.email === email) ?? null
 
