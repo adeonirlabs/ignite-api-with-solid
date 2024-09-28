@@ -1,8 +1,8 @@
 # Requisitos funcionais
 
 - [x] Deve ser possível criar uma conta
-- [ ] Deve ser possível se autenticar
-- [ ] Deve ser possível visualizar o perfil de um usuário
+- [x] Deve ser possível se autenticar
+- [x] Deve ser possível visualizar o perfil de um usuário
 - [ ] Deve ser possível obter o número total de check-ins
 - [ ] Deve ser possível visualizar o histórico de check-ins
 - [ ] Deve ser possível buscar academias próximas
