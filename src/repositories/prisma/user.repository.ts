@@ -4,6 +4,12 @@ import type { UserRepository } from '~/repositories/interfaces/user-repository'
 import { prisma } from '~/shared/services/database'
 
 export class PrismaUserRepository implements UserRepository {
+  async findAll() {
+    const users = await prisma.user.findMany()
+
+    return users
+  }
+
   async findById(id: string) {
     const user = await prisma.user.findUnique({
       where: {

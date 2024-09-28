@@ -14,6 +14,11 @@ describe('Create User Use Case', () => {
     createUserUseCase = new CreateUserUseCase(userRepository)
   })
 
+  it('should start with an empty user array', async () => {
+    const users = await userRepository.findAll()
+    expect(users).toHaveLength(0)
+  })
+
   it('should be able to create a user', async () => {
     const { user } = await createUserUseCase.execute({
       name: 'John Doe',
