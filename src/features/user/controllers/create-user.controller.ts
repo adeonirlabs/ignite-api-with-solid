@@ -1,14 +1,12 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
 import { createUserSchema } from '~/features/user/dtos/create-user.dto'
-import { CreateUserUseCase } from '~/features/user/use-cases/create-user.usecase'
-import { PrismaUserRepository } from '~/repositories/prisma/user.repository'
+import { createUserFactory } from '~/features/user/factories/create-user.factory'
 import { ConflictError } from '~/shared/errors/conflict.error'
 
 export class CreateUserController {
   async create(request: FastifyRequest, reply: FastifyReply) {
-    const userRepository = new PrismaUserRepository()
-    const createUserUseCase = new CreateUserUseCase(userRepository)
+    const createUserUseCase = createUserFactory()
 
     const { name, email, password } = createUserSchema.parse(request.body)
 
