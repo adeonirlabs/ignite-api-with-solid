@@ -1,3 +1,4 @@
+import type { User } from '@prisma/client'
 import { z } from 'zod'
 
 export const authenticateSchema = z.object({
@@ -6,3 +7,7 @@ export const authenticateSchema = z.object({
 })
 
 export type AuthenticateRequest = z.infer<typeof authenticateSchema>
+
+export type AuthenticateResponse = {
+  user: User
+}

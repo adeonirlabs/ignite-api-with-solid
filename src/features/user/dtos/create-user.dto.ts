@@ -1,3 +1,4 @@
+import type { User } from '@prisma/client'
 import { z } from 'zod'
 
 export const createUserSchema = z.object({
@@ -7,3 +8,7 @@ export const createUserSchema = z.object({
 })
 
 export type CreateUserRequest = z.infer<typeof createUserSchema>
+
+export type CreateUserResponse = {
+  user: User
+}

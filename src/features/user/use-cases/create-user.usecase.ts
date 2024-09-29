@@ -1,13 +1,16 @@
 import { hash } from 'bcryptjs'
 
-import type { CreateUserRequest } from '~/features/user/dtos/create-user.dto'
+import type {
+  CreateUserRequest,
+  CreateUserResponse,
+} from '~/features/user/dtos/create-user.dto'
 import type { UserRepository } from '~/repositories/interfaces/user-repository'
 import { ConflictError } from '~/shared/errors/conflict.error'
 
 export class CreateUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async execute(data: CreateUserRequest) {
+  async execute(data: CreateUserRequest): Promise<CreateUserResponse> {
     const { name, email, password } = data
 
     const userAlreadyExists = await this.userRepository.findByEmail(email)

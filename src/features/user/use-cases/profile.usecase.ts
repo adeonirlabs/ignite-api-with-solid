@@ -1,4 +1,7 @@
-import type { ProfileRequest } from '~/features/user/dtos/profile.dto'
+import type {
+  ProfileRequest,
+  ProfileResponse,
+} from '~/features/user/dtos/profile.dto'
 
 import type { UserRepository } from '~/repositories/interfaces/user-repository'
 import { NotFoundError } from '~/shared/errors/not-found'
@@ -6,7 +9,7 @@ import { NotFoundError } from '~/shared/errors/not-found'
 export class ProfileUseCase {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async execute(data: ProfileRequest) {
+  async execute(data: ProfileRequest): Promise<ProfileResponse> {
     const { userId } = data
 
     const user = await this.userRepository.findById(userId)

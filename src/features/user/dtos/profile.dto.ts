@@ -1,3 +1,4 @@
+import type { User } from '@prisma/client'
 import { z } from 'zod'
 
 export const profileSchema = z.object({
@@ -5,3 +6,7 @@ export const profileSchema = z.object({
 })
 
 export type ProfileRequest = z.infer<typeof profileSchema>
+
+export type ProfileResponse = {
+  user: User
+}
