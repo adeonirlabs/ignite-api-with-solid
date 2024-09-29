@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it } from 'bun:test'
 import { hash } from 'bcryptjs'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { AuthenticateUseCase } from '~/features/user/use-cases/authenticate.usecase'
 import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository'
@@ -30,7 +30,7 @@ describe('Authenticate Use Case', () => {
   })
 
   it('should not be able to authenticate with wrong email', async () => {
-    expect(
+    await expect(() =>
       authenticateUseCase.execute({
         email: 'john.doe@example.com',
         password: '123456',
@@ -39,7 +39,7 @@ describe('Authenticate Use Case', () => {
   })
 
   it('should not be able to authenticate with wrong password', async () => {
-    expect(
+    await expect(() =>
       authenticateUseCase.execute({
         email: 'john.doe@example.com',
         password: '123123',

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'bun:test'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { ProfileUseCase } from '~/features/user/use-cases/profile.usecase'
 import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository'
@@ -28,7 +28,7 @@ describe('Profile Use Case', () => {
   })
 
   it('should not be able to get user profile with invalid id', async () => {
-    await expect(
+    await expect(() =>
       profileUseCase.execute({
         userId: 'invalid-id',
       })

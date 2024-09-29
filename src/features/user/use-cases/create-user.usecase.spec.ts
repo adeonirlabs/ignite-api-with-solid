@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it } from 'bun:test'
 import { compare } from 'bcryptjs'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { CreateUserUseCase } from '~/features/user/use-cases/create-user.usecase'
 import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository'
@@ -50,7 +50,7 @@ describe('Create User Use Case', () => {
       password: '123456',
     })
 
-    expect(
+    await expect(() =>
       createUserUseCase.execute({
         name: 'John Doe',
         email,

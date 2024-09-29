@@ -1,6 +1,6 @@
-import { beforeEach, describe, expect, it } from 'bun:test'
-import { CheckInUseCase } from '~/features/user/use-cases/check-in.usecase'
+import { beforeEach, describe, expect, it } from 'vitest'
 
+import { CheckInUseCase } from '~/features/user/use-cases/check-in.usecase'
 import { InMemoryCheckInRepository } from '~/repositories/in-memory/check-in.repository'
 
 describe('Check-in Use Case', () => {
