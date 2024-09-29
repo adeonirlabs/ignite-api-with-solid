@@ -4,7 +4,7 @@ import type {
   CreateUserRequest,
   CreateUserResponse,
 } from '~/features/user/dtos/create-user.dto'
-import type { UserRepository } from '~/repositories/interfaces/user-repository'
+import type { UserRepository } from '~/repositories/interfaces/user.interface'
 import { ConflictError } from '~/shared/errors/conflict.error'
 
 export class CreateUserUseCase {

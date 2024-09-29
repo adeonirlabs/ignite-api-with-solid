@@ -1,6 +1,6 @@
 import type { Prisma } from '@prisma/client'
 
-import type { UserRepository } from '~/repositories/interfaces/user-repository'
+import type { UserRepository } from '~/repositories/interfaces/user.interface'
 import { prisma } from '~/shared/services/database'
 
 export class PrismaUserRepository implements UserRepository {

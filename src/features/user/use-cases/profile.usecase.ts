@@ -3,7 +3,7 @@ import type {
   ProfileResponse,
 } from '~/features/user/dtos/profile.dto'
 
-import type { UserRepository } from '~/repositories/interfaces/user-repository'
+import type { UserRepository } from '~/repositories/interfaces/user.interface'
 import { NotFoundError } from '~/shared/errors/not-found'
 
 export class ProfileUseCase {

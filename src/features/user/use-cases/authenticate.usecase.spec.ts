@@ -1,4 +1,4 @@
-import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
+import { beforeEach, describe, expect, it } from 'bun:test'
 import { hash } from 'bcryptjs'
 
 import { AuthenticateUseCase } from '~/features/user/use-cases/authenticate.usecase'

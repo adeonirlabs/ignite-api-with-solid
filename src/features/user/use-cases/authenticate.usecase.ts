@@ -4,7 +4,7 @@ import type {
   AuthenticateRequest,
   AuthenticateResponse,
 } from '~/features/user/dtos/authenticate.dto'
-import type { UserRepository } from '~/repositories/interfaces/user-repository'
+import type { UserRepository } from '~/repositories/interfaces/user.interface'
 import { UnauthorizedError } from '~/shared/errors/unauthorized.error'
 
 export class AuthenticateUseCase {
