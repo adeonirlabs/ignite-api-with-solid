@@ -5,6 +5,7 @@ import type {
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
 import { NotFoundError } from '~/shared/errors/not-found'
+import { getDistance } from '~/utils/get-distance'
 
 export class CheckInUseCase {
   constructor(
@@ -13,13 +14,30 @@ export class CheckInUseCase {
   ) {}
 
   async execute(data: CheckInRequest): Promise<CheckInResponse> {
-    const gym = await this.gymRepository.findById(data.gymId)
+    const { userId, gymId, userLatitude, userLongitude } = data
+
+    const gym = await this.gymRepository.findById(gymId)
 
     if (!gym) {
       throw new NotFoundError('Gym not found')
     }
 
-    const { userId, gymId } = data
+    const distance = getDistance(
+      {
+        latitude: userLatitude,
+        longitude: userLongitude,
+      },
+      {
+        latitude: gym.latitude.toNumber(),
+        longitude: gym.longitude.toNumber(),
+      }
+    )
+
+    const MAX_DISTANCE_IN_KILOMETERS = 0.1
+
+    if (distance > MAX_DISTANCE_IN_KILOMETERS) {
+      throw new Error('User is too far from gym')
+    }
 
     const alreadyCheckedIn = await this.checkInRepository.findByUserIdAtDate(
       userId,
