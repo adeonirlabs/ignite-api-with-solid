@@ -14,7 +14,7 @@
 # Regras de negócio
 
 - [x] O usuário não pode se cadastrar com um e-mail já existente
-- [ ] O usuário não pode fazer 2 check-ins no mesmo dia
+- [x] O usuário não pode fazer 2 check-ins no mesmo dia
 - [ ] O usuário não pode fazer check-in se não estiver a 100 metros da academia
 - [ ] O check-in só pode ser validado até 20 minutos após ser criado
 - [ ] O check-in só pode ser validado por um administrador
