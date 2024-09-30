@@ -9,13 +9,13 @@
 - [ ] Deve ser possível buscar academias pelo nome
 - [x] Deve ser possível realizar check-in em uma academia
 - [ ] Deve ser possível validar o check-in de um usuário
-- [ ] Deve ser possível cadastrar uma academia
+- [x] Deve ser possível cadastrar uma academia
 
 # Regras de negócio
 
 - [x] O usuário não pode se cadastrar com um e-mail já existente
 - [x] O usuário não pode fazer 2 check-ins no mesmo dia
-- [ ] O usuário não pode fazer check-in se não estiver a 100 metros da academia
+- [x] O usuário não pode fazer check-in se não estiver a 100 metros da academia
 - [ ] O check-in só pode ser validado até 20 minutos após ser criado
 - [ ] O check-in só pode ser validado por um administrador
 - [ ] A academia só pode ser cadastrada por um usuário administrador
