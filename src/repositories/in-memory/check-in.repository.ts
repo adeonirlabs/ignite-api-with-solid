@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
 
 export class InMemoryCheckInRepository implements CheckInRepository {
-  private checkIns: CheckIn[] = []
+  public checkIns: CheckIn[] = []
 
   async create(data: Prisma.CheckInUncheckedCreateInput) {
     const checkIn = {
