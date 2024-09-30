@@ -1,4 +1,3 @@
-import { Decimal } from '@prisma/client/runtime/library'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { CheckInUseCase } from '~/features/user/use-cases/check-in.usecase'
@@ -15,14 +14,13 @@ describe('Check-in Use Case', () => {
     gymRepository = new InMemoryGymRepository()
     checkInUseCase = new CheckInUseCase(checkInRepository, gymRepository)
 
-    gymRepository.gyms.push({
-      id: 'gym-id-1',
-      name: 'Gym',
+    await gymRepository.create({
+      id: 'gym-1',
+      name: 'Gym 1',
       description: null,
       phone: null,
-      latitude: new Decimal(-29.297956),
-      longitude: new Decimal(-51.500644),
-      createdAt: new Date(),
+      latitude: -29.297956,
+      longitude: -51.500644,
     })
 
     vi.useFakeTimers()
@@ -34,8 +32,8 @@ describe('Check-in Use Case', () => {
 
   it('should be able to check in', async () => {
     const { checkIn } = await checkInUseCase.execute({
-      userId: 'user-id-1',
-      gymId: 'gym-id-1',
+      userId: 'user-1',
+      gymId: 'gym-1',
       userLatitude: -29.297956,
       userLongitude: -51.500644,
     })
@@ -44,20 +42,19 @@ describe('Check-in Use Case', () => {
   })
 
   it('should not be able to check in on distant gym', async () => {
-    gymRepository.gyms.push({
-      id: 'gym-id-2',
-      name: 'Gym',
+    await gymRepository.create({
+      id: 'gym-2',
+      name: 'Gym 2',
       description: null,
       phone: null,
-      latitude: new Decimal(-29.295474),
-      longitude: new Decimal(-51.500698),
-      createdAt: new Date(),
+      latitude: -29.295474,
+      longitude: -51.500698,
     })
 
     await expect(() =>
       checkInUseCase.execute({
-        userId: 'user-id-1',
-        gymId: 'gym-id-2',
+        userId: 'user-1',
+        gymId: 'gym-2',
         userLatitude: -29.297956,
         userLongitude: -51.500644,
       })
@@ -68,16 +65,16 @@ describe('Check-in Use Case', () => {
     vi.setSystemTime('2024-01-01T00:00:00.000Z')
 
     await checkInUseCase.execute({
-      userId: 'user-id-1',
-      gymId: 'gym-id-1',
+      userId: 'user-1',
+      gymId: 'gym-1',
       userLatitude: -29.297956,
       userLongitude: -51.500644,
     })
 
     await expect(() =>
       checkInUseCase.execute({
-        userId: 'user-id-1',
-        gymId: 'gym-id-1',
+        userId: 'user-1',
+        gymId: 'gym-1',
         userLatitude: -29.297956,
         userLongitude: -51.500644,
       })
@@ -88,8 +85,8 @@ describe('Check-in Use Case', () => {
     vi.setSystemTime('2024-01-01T00:00:00.000Z')
 
     await checkInUseCase.execute({
-      userId: 'user-id-1',
-      gymId: 'gym-id-1',
+      userId: 'user-1',
+      gymId: 'gym-1',
       userLatitude: -29.297956,
       userLongitude: -51.500644,
     })
@@ -97,8 +94,8 @@ describe('Check-in Use Case', () => {
     vi.setSystemTime('2024-01-02T00:00:00.000Z')
 
     const { checkIn } = await checkInUseCase.execute({
-      userId: 'user-id-1',
-      gymId: 'gym-id-1',
+      userId: 'user-1',
+      gymId: 'gym-1',
       userLatitude: -29.297956,
       userLongitude: -51.500644,
     })
