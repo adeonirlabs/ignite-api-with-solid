@@ -27,6 +27,7 @@ describe('Fetch Check-in History Use Case', () => {
 
     const { checkIns } = await fetchCheckInHistoryUseCase.execute({
       userId: 'user-1',
+      page: 1,
     })
 
     expect(checkIns).toHaveLength(2)
@@ -34,5 +35,21 @@ describe('Fetch Check-in History Use Case', () => {
       expect.objectContaining({ gymId: 'gym-1' }),
       expect.objectContaining({ gymId: 'gym-2' }),
     ])
+  })
+
+  it('should be ale to fetch check in paginated history', async () => {
+    for (let i = 1; i <= 28; i++) {
+      await checkInRepository.create({
+        userId: 'user-1',
+        gymId: `gym-${i}`,
+      })
+    }
+
+    const { checkIns } = await fetchCheckInHistoryUseCase.execute({
+      userId: 'user-1',
+      page: 2,
+    })
+
+    expect(checkIns).toHaveLength(8)
   })
 })

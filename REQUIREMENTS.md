@@ -4,7 +4,7 @@
 - [x] Deve ser possível se autenticar
 - [x] Deve ser possível visualizar o perfil de um usuário
 - [ ] Deve ser possível obter o número total de check-ins
-- [ ] Deve ser possível visualizar o histórico de check-ins
+- [x] Deve ser possível visualizar o histórico de check-ins
 - [ ] Deve ser possível buscar academias próximas
 - [ ] Deve ser possível buscar academias pelo nome
 - [x] Deve ser possível realizar check-in em uma academia
@@ -24,5 +24,5 @@
 
 - [x] A senha do usuário precisa estar criptografada
 - [x] Os dados da aplicação precisam estar persistidos em um banco de dados
-- [ ] Todas as listas de dados precisam estar paginadas com 20 itens por página
+- [x] Todas as listas de dados precisam estar paginadas com 20 itens por página
 - [ ] O usuário deve ser identificado pelo token

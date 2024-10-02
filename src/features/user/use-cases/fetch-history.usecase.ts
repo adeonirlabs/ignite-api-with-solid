@@ -10,9 +10,9 @@ export class FetchCheckInHistoryUseCase {
   async execute(
     data: FetchCheckInHistoryRequest
   ): Promise<FetchCheckInHistoryResponse> {
-    const { userId } = data
+    const { userId, page } = data
 
-    const checkIns = await this.checkInRepository.findManyByUserId(userId)
+    const checkIns = await this.checkInRepository.findManyByUserId(userId, page)
 
     return { checkIns }
   }

@@ -3,6 +3,7 @@ import { z } from 'zod'
 
 export const fetchCheckInHistorySchema = z.object({
   userId: z.string().uuid(),
+  page: z.number(),
 })
 
 export type FetchCheckInHistoryRequest = z.infer<
