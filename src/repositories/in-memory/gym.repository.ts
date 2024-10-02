@@ -11,6 +11,12 @@ export class InMemoryGymRepository implements GymRepository {
     return this.gyms.find((gym) => gym.id === id) ?? null
   }
 
+  async searchMany(query: string, page: number) {
+    return this.gyms
+      .filter((gym) => gym.name.toLowerCase().includes(query.toLowerCase()))
+      .slice((page - 1) * 20, page * 20)
+  }
+
   async create(data: Prisma.GymCreateInput) {
     const gym = {
       id: data.id ?? randomUUID(),
