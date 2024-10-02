@@ -3,6 +3,7 @@ import type { Gym, Prisma } from '@prisma/client'
 import { Decimal } from '@prisma/client/runtime/library'
 
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
+import { type Coordinates, getDistance } from '~/utils/get-distance'
 
 export class InMemoryGymRepository implements GymRepository {
   public gyms: Gym[] = []
@@ -15,6 +16,22 @@ export class InMemoryGymRepository implements GymRepository {
     return this.gyms
       .filter((gym) => gym.name.toLowerCase().includes(query.toLowerCase()))
       .slice((page - 1) * 20, page * 20)
+  }
+
+  async findManyNearby(params: Coordinates) {
+    return this.gyms.filter((gym) => {
+      const distance = getDistance(
+        { latitude: params.latitude, longitude: params.longitude },
+        {
+          latitude: gym.latitude.toNumber(),
+          longitude: gym.longitude.toNumber(),
+        }
+      )
+
+      const MAX_DISTANCE_IN_KILOMETERS = 10
+
+      return distance < MAX_DISTANCE_IN_KILOMETERS
+    })
   }
 
   async create(data: Prisma.GymCreateInput) {
