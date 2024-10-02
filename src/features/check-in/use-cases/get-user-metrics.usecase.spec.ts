@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { GetUserMetricsUseCase } from '~/features/user/use-cases/get-user-metrics.usecase'
+import { GetUserMetricsUseCase } from '~/features/check-in/use-cases/get-user-metrics.usecase'
 import { InMemoryCheckInRepository } from '~/repositories/in-memory/check-in.repository'
 
 describe('Get User Metrics Use Case', () => {

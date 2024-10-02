@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { CheckInUseCase } from '~/features/user/use-cases/check-in.usecase'
+import { CheckInUseCase } from '~/features/check-in/use-cases/check-in.usecase'
 import { InMemoryCheckInRepository } from '~/repositories/in-memory/check-in.repository'
 import { InMemoryGymRepository } from '~/repositories/in-memory/gym.repository'
 

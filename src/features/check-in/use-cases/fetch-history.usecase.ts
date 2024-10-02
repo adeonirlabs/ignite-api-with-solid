@@ -1,7 +1,7 @@
 import type {
   FetchCheckInHistoryRequest,
   FetchCheckInHistoryResponse,
-} from '~/features/user/dtos/fetch-history.dto'
+} from '~/features/check-in/dtos/fetch-history.dto'
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
 
 export class FetchCheckInHistoryUseCase {

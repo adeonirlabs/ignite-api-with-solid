@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { FetchCheckInHistoryUseCase } from '~/features/user/use-cases/fetch-history.usecase'
+import { FetchCheckInHistoryUseCase } from '~/features/check-in/use-cases/fetch-history.usecase'
 import { InMemoryCheckInRepository } from '~/repositories/in-memory/check-in.repository'
 
 describe('Fetch Check-in History Use Case', () => {

@@ -1,7 +1,7 @@
 import type {
   CheckInRequest,
   CheckInResponse,
-} from '~/features/user/dtos/check-in.dto'
+} from '~/features/check-in/dtos/check-in.dto'
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
 import { NotFoundError } from '~/shared/errors/not-found'

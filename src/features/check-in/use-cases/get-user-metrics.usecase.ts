@@ -1,7 +1,7 @@
 import type {
   GetUserMetricsRequest,
   GetUserMetricsResponse,
-} from '~/features/user/dtos/get-user-metrics.dto'
+} from '~/features/check-in/dtos/get-user-metrics.dto'
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
 
 export class GetUserMetricsUseCase {
