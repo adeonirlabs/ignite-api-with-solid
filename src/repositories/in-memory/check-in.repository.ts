@@ -7,6 +7,10 @@ import type { CheckInRepository } from '~/repositories/interfaces/check-in.inter
 export class InMemoryCheckInRepository implements CheckInRepository {
   public checkIns: CheckIn[] = []
 
+  async findById(id: string) {
+    return this.checkIns.find((checkIn) => checkIn.id === id) || null
+  }
+
   async findByUserIdAtDate(userId: string, date: Date) {
     const startOfDay = dayjs(date).startOf('date')
     const endOfDay = dayjs(date).endOf('date')
@@ -33,6 +37,10 @@ export class InMemoryCheckInRepository implements CheckInRepository {
       .slice((page - 1) * 20, page * 20)
   }
 
+  async countByUserId(userId: string) {
+    return this.checkIns.filter((checkIn) => checkIn.userId === userId).length
+  }
+
   async create(data: Prisma.CheckInUncheckedCreateInput) {
     const checkIn = {
       id: randomUUID(),
@@ -47,7 +55,15 @@ export class InMemoryCheckInRepository implements CheckInRepository {
     return checkIn
   }
 
-  async countByUserId(userId: string) {
-    return this.checkIns.filter((checkIn) => checkIn.userId === userId).length
+  async save(checkIn: CheckIn) {
+    const checkInIndex = this.checkIns.findIndex(
+      (item) => item.id === checkIn.id
+    )
+
+    if (checkInIndex >= 0) {
+      this.checkIns[checkInIndex] = checkIn
+    }
+
+    return checkIn
   }
 }

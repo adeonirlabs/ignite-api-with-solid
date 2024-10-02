@@ -28,7 +28,7 @@ describe('Profile Use Case', () => {
   })
 
   it('should not be able to get user profile with invalid id', async () => {
-    await expect(() =>
+    await expect(
       profileUseCase.execute({
         userId: 'invalid-id',
       })

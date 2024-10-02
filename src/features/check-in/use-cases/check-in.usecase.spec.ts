@@ -51,7 +51,7 @@ describe('Check-in Use Case', () => {
       longitude: -51.500698,
     })
 
-    await expect(() =>
+    await expect(
       checkInUseCase.execute({
         userId: 'user-1',
         gymId: 'gym-2',
@@ -71,7 +71,7 @@ describe('Check-in Use Case', () => {
       userLongitude: -51.500644,
     })
 
-    await expect(() =>
+    await expect(
       checkInUseCase.execute({
         userId: 'user-1',
         gymId: 'gym-1',
