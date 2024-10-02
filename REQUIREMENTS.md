@@ -3,7 +3,7 @@
 - [x] Deve ser possível criar uma conta
 - [x] Deve ser possível se autenticar
 - [x] Deve ser possível visualizar o perfil de um usuário
-- [ ] Deve ser possível obter o número total de check-ins
+- [x] Deve ser possível obter o número total de check-ins
 - [x] Deve ser possível visualizar o histórico de check-ins
 - [ ] Deve ser possível buscar academias próximas
 - [ ] Deve ser possível buscar academias pelo nome
