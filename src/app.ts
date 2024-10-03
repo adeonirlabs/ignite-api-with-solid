@@ -1,3 +1,4 @@
+import fastifyJwt from '@fastify/jwt'
 import { fastify } from 'fastify'
 import { ZodError } from 'zod'
 
@@ -5,6 +6,10 @@ import { env } from '~/config/env'
 import { routes } from '~/routes'
 
 export const app = fastify()
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+})
 
 app.register(routes)
 
