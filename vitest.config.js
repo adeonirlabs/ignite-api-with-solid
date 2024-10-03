@@ -7,6 +7,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
+    environmentMatchGlobs: [['src/features/*/controllers', 'prisma']],
   },
   resolve: {
     alias: {
