@@ -1,7 +1,7 @@
 import type { Prisma } from '@prisma/client'
 
 import type { UserRepository } from '~/repositories/interfaces/user.interface'
-import { prisma } from '~/shared/services/database'
+import { prisma } from '~/services/database'
 
 export class PrismaUserRepository implements UserRepository {
   async findAll() {

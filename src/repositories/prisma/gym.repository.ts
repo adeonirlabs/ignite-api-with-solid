@@ -1,7 +1,7 @@
 import type { Gym, Prisma } from '@prisma/client'
 
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
-import { prisma } from '~/shared/services/database'
+import { prisma } from '~/services/database'
 import type { Coordinates } from '~/utils/get-distance'
 
 export class PrismaGymRepository implements GymRepository {

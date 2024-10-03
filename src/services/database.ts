@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-import { env } from '~/config/env'
+import { env } from '~/configs/env'
 
 export const prisma = new PrismaClient({
   log: env.NODE_ENV === 'development' ? ['query'] : [],

@@ -2,7 +2,7 @@ import type { CheckIn, Prisma } from '@prisma/client'
 import dayjs from 'dayjs'
 
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
-import { prisma } from '~/shared/services/database'
+import { prisma } from '~/services/database'
 
 export class PrismaCheckInRepository implements CheckInRepository {
   async findById(id: string) {
