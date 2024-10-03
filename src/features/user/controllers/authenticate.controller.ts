@@ -11,7 +11,18 @@ export class AuthenticateController {
     const authenticateUseCase = authenticateFactory()
 
     try {
-      await authenticateUseCase.execute({ email, password })
+      const { user } = await authenticateUseCase.execute({ email, password })
+
+      const token = await reply.jwtSign(
+        {},
+        {
+          sign: {
+            sub: user.id,
+          },
+        }
+      )
+
+      return reply.status(200).send({ token })
     } catch (error) {
       if (error instanceof UnauthorizedError) {
         return reply.status(401).send({ message: error.message })
@@ -19,7 +30,5 @@ export class AuthenticateController {
 
       throw error
     }
-
-    return reply.status(200).send()
   }
 }
