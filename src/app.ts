@@ -5,7 +5,7 @@ import { ZodError } from 'zod'
 import { env } from '~/configs/env'
 import { routes } from '~/routes'
 
-export const app = fastify()
+const app = fastify()
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
@@ -28,3 +28,5 @@ app.setErrorHandler((error, _request, reply) => {
 
   return reply.status(500).send({ message: 'Internal server error' })
 })
+
+export { app }
