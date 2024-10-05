@@ -8,7 +8,7 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     include: ['src/**/*.e2e-spec.ts'],
-    environmentMatchGlobs: [['src/features/*/controllers', 'prisma']],
+    environmentMatchGlobs: [['src/features/*/controllers/**', 'prisma']],
   },
   resolve: {
     alias: {
