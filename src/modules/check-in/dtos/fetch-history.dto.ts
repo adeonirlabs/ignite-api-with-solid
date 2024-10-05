@@ -6,8 +6,18 @@ export const fetchCheckInHistorySchema = z.object({
   page: z.number(),
 })
 
-export type FetchHistoryRequest = z.infer<typeof fetchCheckInHistorySchema>
+export type FetchCheckInHistoryRequest = z.infer<
+  typeof fetchCheckInHistorySchema
+>
 
-export type FetchHistoryResponse = {
+export type FetchCheckInHistoryResponse = {
   checkIns: CheckIn[]
 }
+
+export const fetchCheckInHistoryQuerySchema = z.object({
+  page: z.number(),
+})
+
+export type FetchCheckInHistoryQueryRequest = z.infer<
+  typeof fetchCheckInHistoryQuerySchema
+>
