@@ -2,6 +2,7 @@ import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 import { app } from '~/app'
+import { createAuthUser } from '~/utils/tests/create-auth-user'
 
 describe('Create gym controller', () => {
   beforeAll(async () => {
@@ -13,23 +14,14 @@ describe('Create gym controller', () => {
   })
 
   it('should be able to create a gym', async () => {
-    await request(app.server).post('/users').send({
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      password: '123456',
-    })
-
-    const authResponse = await request(app.server).post('/sessions').send({
-      email: 'john.doe@example.com',
-      password: '123456',
-    })
+    const { token } = await createAuthUser(app)
 
     const response = await request(app.server)
       .post('/gyms')
-      .set('Authorization', `Bearer ${authResponse.body.token}`)
+      .set('Authorization', `Bearer ${token}`)
       .send({
-        name: 'John Doe',
-        description: 'John Doe',
+        name: 'TypeScript Gym',
+        description: 'Some description',
         phone: '123456',
         latitude: -29.297956,
         longitude: -51.500644,
