@@ -12,7 +12,7 @@ export default defineConfig({
       BASE_URL: process.env.BASE_URL,
     },
     include: ['src/**/*.e2e-spec.ts'],
-    environmentMatchGlobs: [['src/features/*/controllers/**', 'prisma']],
+    environmentMatchGlobs: [['src/modules/*/controllers/**', 'prisma']],
   },
   resolve: {
     alias: {
