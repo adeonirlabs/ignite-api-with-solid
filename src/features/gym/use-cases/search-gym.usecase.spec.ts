@@ -14,13 +14,13 @@ describe('Fetch Check-in History Use Case', () => {
 
   it('should be to search gyms', async () => {
     await gymRepository.create({
-      name: 'gym-1',
+      name: 'Gym 1',
       latitude: -29.297956,
       longitude: -51.500644,
     })
 
     await gymRepository.create({
-      name: 'gym-2',
+      name: 'Gym 2',
       latitude: -29.297956,
       longitude: -51.500644,
     })
@@ -32,15 +32,15 @@ describe('Fetch Check-in History Use Case', () => {
 
     expect(gyms).toHaveLength(2)
     expect(gyms).toEqual([
-      expect.objectContaining({ name: 'gym-1' }),
-      expect.objectContaining({ name: 'gym-2' }),
+      expect.objectContaining({ name: 'Gym 1' }),
+      expect.objectContaining({ name: 'Gym 2' }),
     ])
   })
 
   it('should be ale to fetch gyms paginated', async () => {
     for (let i = 1; i <= 28; i++) {
       await gymRepository.create({
-        name: `gym-${i}`,
+        name: `Gym ${i}`,
         latitude: -29.297956,
         longitude: -51.500644,
       })

@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 export const searchGymSchema = z.object({
   query: z.string(),
-  page: z.number(),
+  page: z.coerce.number().min(1).default(1),
 })
 
 export type SearchGymRequest = z.infer<typeof searchGymSchema>
