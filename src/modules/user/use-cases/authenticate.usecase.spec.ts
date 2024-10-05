@@ -1,9 +1,9 @@
 import { hash } from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'
 
+import { UnauthorizedError } from '~/errors/unauthorized.error'
 import { AuthenticateUseCase } from '~/modules/user/use-cases/authenticate.usecase'
 import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository'
-import { UnauthorizedError } from '~/shared/errors/unauthorized.error'
 
 describe('Authenticate Use Case', () => {
   let userRepository: InMemoryUserRepository

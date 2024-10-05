@@ -1,8 +1,8 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
+import { UnauthorizedError } from '~/errors/unauthorized.error'
 import { authenticateSchema } from '~/modules/user/dtos/authenticate.dto'
 import { authenticateFactory } from '~/modules/user/factories/authenticate.factory'
-import { UnauthorizedError } from '~/shared/errors/unauthorized.error'
 
 export class AuthenticateController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

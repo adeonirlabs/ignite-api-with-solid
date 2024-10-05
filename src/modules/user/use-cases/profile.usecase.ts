@@ -3,8 +3,8 @@ import type {
   ProfileResponse,
 } from '~/modules/user/dtos/profile.dto'
 
+import { NotFoundError } from '~/errors/not-found'
 import type { UserRepository } from '~/repositories/interfaces/user.interface'
-import { NotFoundError } from '~/shared/errors/not-found'
 
 export class ProfileUseCase {
   constructor(private readonly userRepository: UserRepository) {}

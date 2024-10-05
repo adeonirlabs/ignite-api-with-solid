@@ -1,9 +1,9 @@
 import { compare } from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'
 
+import { ConflictError } from '~/errors/conflict.error'
 import { CreateUserUseCase } from '~/modules/user/use-cases/create-user.usecase'
 import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository'
-import { ConflictError } from '~/shared/errors/conflict.error'
 
 describe('Create User Use Case', () => {
   let userRepository: InMemoryUserRepository

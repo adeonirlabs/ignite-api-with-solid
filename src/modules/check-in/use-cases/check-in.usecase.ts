@@ -1,10 +1,10 @@
+import { NotFoundError } from '~/errors/not-found'
 import type {
   CheckInRequest,
   CheckInResponse,
 } from '~/modules/check-in/dtos/check-in.dto'
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
-import { NotFoundError } from '~/shared/errors/not-found'
 import { getDistance } from '~/utils/get-distance'
 
 export class CheckInUseCase {

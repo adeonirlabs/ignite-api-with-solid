@@ -1,9 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { ConflictError } from '~/errors/conflict.error'
+import { NotFoundError } from '~/errors/not-found'
 import { ValidateCheckInUseCase } from '~/modules/check-in/use-cases/validate-check-in.usecase'
 import { InMemoryCheckInRepository } from '~/repositories/in-memory/check-in.repository'
-import { ConflictError } from '~/shared/errors/conflict.error'
-import { NotFoundError } from '~/shared/errors/not-found'
 
 describe('Check-in Use Case', () => {
   let checkInRepository: InMemoryCheckInRepository

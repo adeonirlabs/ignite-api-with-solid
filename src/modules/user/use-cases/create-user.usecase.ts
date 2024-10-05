@@ -1,11 +1,11 @@
 import { hash } from 'bcryptjs'
 
+import { ConflictError } from '~/errors/conflict.error'
 import type {
   CreateUserRequest,
   CreateUserResponse,
 } from '~/modules/user/dtos/create-user.dto'
 import type { UserRepository } from '~/repositories/interfaces/user.interface'
-import { ConflictError } from '~/shared/errors/conflict.error'
 
 export class CreateUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}

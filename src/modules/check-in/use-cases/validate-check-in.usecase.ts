@@ -1,11 +1,11 @@
 import dayjs from 'dayjs'
+import { ConflictError } from '~/errors/conflict.error'
+import { NotFoundError } from '~/errors/not-found'
 import type {
   ValidateCheckInRequest,
   ValidateCheckInResponse,
 } from '~/modules/check-in/dtos/validate-check-in.dto'
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
-import { ConflictError } from '~/shared/errors/conflict.error'
-import { NotFoundError } from '~/shared/errors/not-found'
 
 export class ValidateCheckInUseCase {
   constructor(private readonly checkInRepository: CheckInRepository) {}

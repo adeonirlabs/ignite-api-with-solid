@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
+import { NotFoundError } from '~/errors/not-found'
 import { ProfileUseCase } from '~/modules/user/use-cases/profile.usecase'
 import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository'
-import { NotFoundError } from '~/shared/errors/not-found'
 
 describe('Profile Use Case', () => {
   let userRepository: InMemoryUserRepository

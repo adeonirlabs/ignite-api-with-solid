@@ -1,11 +1,11 @@
 import { compare } from 'bcryptjs'
 
+import { UnauthorizedError } from '~/errors/unauthorized.error'
 import type {
   AuthenticateRequest,
   AuthenticateResponse,
 } from '~/modules/user/dtos/authenticate.dto'
 import type { UserRepository } from '~/repositories/interfaces/user.interface'
-import { UnauthorizedError } from '~/shared/errors/unauthorized.error'
 
 export class AuthenticateUseCase {
   constructor(private readonly userRepository: UserRepository) {}
