@@ -15,7 +15,7 @@ export type FetchCheckInHistoryResponse = {
 }
 
 export const fetchCheckInHistoryQuerySchema = z.object({
-  page: z.number(),
+  page: z.coerce.number().min(1).default(1),
 })
 
 export type FetchCheckInHistoryQueryRequest = z.infer<

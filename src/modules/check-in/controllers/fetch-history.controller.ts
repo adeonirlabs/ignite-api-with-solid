@@ -7,7 +7,7 @@ export class FetchHistoryController {
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const fetchHistoryUseCase = fetchHistoryFactory()
 
-    const { page } = fetchCheckInHistoryQuerySchema.parse(request.body)
+    const { page } = fetchCheckInHistoryQuerySchema.parse(request.query)
 
     const { checkIns } = await fetchHistoryUseCase.execute({
       userId: request.user.sub,
