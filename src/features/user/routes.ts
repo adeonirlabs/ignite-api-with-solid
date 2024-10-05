@@ -11,8 +11,8 @@ export async function userRoutes(app: FastifyInstance) {
   const profileController = new ProfileController()
 
   // Public routes
-  app.post('/users', createUserController.create)
-  app.post('/sessions', authenticateController.authenticate)
+  app.post('/users', createUserController.handle)
+  app.post('/sessions', authenticateController.handle)
 
   // Private routes
   app.get('/profile', { onRequest: [verifyJwt] }, profileController.show)

@@ -5,7 +5,7 @@ import { createUserFactory } from '~/features/user/factories/create-user.factory
 import { ConflictError } from '~/shared/errors/conflict.error'
 
 export class CreateUserController {
-  async create(request: FastifyRequest, reply: FastifyReply) {
+  async handle(request: FastifyRequest, reply: FastifyReply) {
     const createUserUseCase = createUserFactory()
 
     const { name, email, password } = createUserSchema.parse(request.body)

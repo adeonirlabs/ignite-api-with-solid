@@ -5,7 +5,7 @@ import { authenticateFactory } from '~/features/user/factories/authenticate.fact
 import { UnauthorizedError } from '~/shared/errors/unauthorized.error'
 
 export class AuthenticateController {
-  async authenticate(request: FastifyRequest, reply: FastifyReply) {
+  async handle(request: FastifyRequest, reply: FastifyReply) {
     const { email, password } = authenticateSchema.parse(request.body)
 
     const authenticateUseCase = authenticateFactory()
