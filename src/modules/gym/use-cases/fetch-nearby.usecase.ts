@@ -8,11 +8,11 @@ export class FetchNearbyGymUseCase {
   constructor(private readonly gymRepository: GymRepository) {}
 
   async execute(data: FetchNearbyGymRequest): Promise<FetchNearbyGymResponse> {
-    const { userLatitude, userLongitude } = data
+    const { latitude, longitude } = data
 
     const gyms = await this.gymRepository.findManyNearby({
-      latitude: userLatitude,
-      longitude: userLongitude,
+      latitude,
+      longitude,
     })
 
     return { gyms }

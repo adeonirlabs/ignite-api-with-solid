@@ -7,7 +7,7 @@ export class SearchGymController {
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const searchGymUseCase = searchGymFactory()
 
-    const { query, page } = searchGymSchema.parse(request.body)
+    const { query, page } = searchGymSchema.parse(request.params)
 
     const { gyms } = await searchGymUseCase.execute({
       query,

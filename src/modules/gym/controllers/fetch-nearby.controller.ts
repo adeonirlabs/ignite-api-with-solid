@@ -7,13 +7,11 @@ export class FetchNearbyGymController {
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const fetchNearbyGymUseCase = fetchNearbyGymFactory()
 
-    const { userLatitude, userLongitude } = fetchNearbyGymSchema.parse(
-      request.body
-    )
+    const { latitude, longitude } = fetchNearbyGymSchema.parse(request.params)
 
     const { gyms } = await fetchNearbyGymUseCase.execute({
-      userLatitude,
-      userLongitude,
+      latitude,
+      longitude,
     })
 
     return reply.status(200).send({ gyms })

@@ -28,8 +28,8 @@ describe('Fetch Nearby Gym Use Case', () => {
     })
 
     const { gyms } = await fetchNearbyGymUseCase.execute({
-      userLatitude: -29.295474,
-      userLongitude: -51.500698,
+      latitude: -29.295474,
+      longitude: -51.500698,
     })
 
     expect(gyms).toHaveLength(1)
