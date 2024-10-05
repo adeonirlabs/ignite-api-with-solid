@@ -2,6 +2,7 @@ import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 import { app } from '~/app'
+import { createAuthUser } from '~/utils/tests/create-auth-user'
 
 describe('Profile user controller', () => {
   beforeAll(async () => {
@@ -13,20 +14,11 @@ describe('Profile user controller', () => {
   })
 
   it('should be able to get user profile', async () => {
-    await request(app.server).post('/users').send({
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      password: '123456',
-    })
-
-    const authResponse = await request(app.server).post('/sessions').send({
-      email: 'john.doe@example.com',
-      password: '123456',
-    })
+    const { token } = await createAuthUser(app)
 
     const profileResponse = await request(app.server)
       .get('/profile')
-      .set('Authorization', `Bearer ${authResponse.body.token}`)
+      .set('Authorization', `Bearer ${token}`)
 
     expect(profileResponse.status).toBe(200)
     expect(profileResponse.body).toEqual(
