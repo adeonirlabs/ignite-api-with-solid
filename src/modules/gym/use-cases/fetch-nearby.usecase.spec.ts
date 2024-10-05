@@ -15,24 +15,24 @@ describe('Fetch Nearby Gym Use Case', () => {
   it('should be to fetch nearby gyms', async () => {
     // Nearby gym
     await gymRepository.create({
-      name: 'gym-1',
+      name: 'TypeScript Gym',
       latitude: -29.2974162,
       longitude: -51.5009403,
     })
 
     // Distant gym
     await gymRepository.create({
-      name: 'gym-2',
+      name: 'JavaScript Gym',
       latitude: -29.4400073,
       longitude: -51.5051592,
     })
 
     const { gyms } = await fetchNearbyGymUseCase.execute({
-      latitude: -29.295474,
-      longitude: -51.500698,
+      userLatitude: -29.295474,
+      userLongitude: -51.500698,
     })
 
     expect(gyms).toHaveLength(1)
-    expect(gyms).toEqual([expect.objectContaining({ name: 'gym-1' })])
+    expect(gyms).toEqual([expect.objectContaining({ name: 'TypeScript Gym' })])
   })
 })
