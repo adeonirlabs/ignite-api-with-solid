@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
-import { fetchNearbyGymSchema } from '~/modules/gym/dtos/fetch-nearby-gym.dto'
-import { fetchNearbyGymFactory } from '~/modules/gym/factories/fetch-nearby-gym.factory'
+import { fetchNearbyGymSchema } from '~/modules/gym/dtos/fetch-nearby.dto'
+import { fetchNearbyGymFactory } from '~/modules/gym/factories/fetch-nearby.factory'
 
 export class FetchNearbyGymController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

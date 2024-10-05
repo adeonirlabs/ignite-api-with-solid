@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { CreateGymUseCase } from '~/modules/gym/use-cases/create-gym.usecase'
+import { CreateGymUseCase } from '~/modules/gym/use-cases/create.usecase'
 import { InMemoryGymRepository } from '~/repositories/in-memory/gym.repository'
 
 describe('Create Gym Use Case', () => {

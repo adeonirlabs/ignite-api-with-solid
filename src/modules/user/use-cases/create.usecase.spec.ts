@@ -2,7 +2,7 @@ import { compare } from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import { ConflictError } from '~/errors/conflict.error'
-import { CreateUserUseCase } from '~/modules/user/use-cases/create-user.usecase'
+import { CreateUserUseCase } from '~/modules/user/use-cases/create.usecase'
 import { InMemoryUserRepository } from '~/repositories/in-memory/user.repository'
 
 describe('Create User Use Case', () => {

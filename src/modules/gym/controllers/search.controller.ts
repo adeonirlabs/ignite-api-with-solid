@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
-import { searchGymSchema } from '~/modules/gym/dtos/search-gym.dto'
-import { searchGymFactory } from '~/modules/gym/factories/search-gym.factory'
+import { searchGymSchema } from '~/modules/gym/dtos/search.dto'
+import { searchGymFactory } from '~/modules/gym/factories/search.factory'
 
 export class SearchGymController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

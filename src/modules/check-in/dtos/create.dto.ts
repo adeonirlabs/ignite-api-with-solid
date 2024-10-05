@@ -1,15 +1,15 @@
 import type { CheckIn } from '@prisma/client'
 import { z } from 'zod'
 
-export const checkInSchema = z.object({
+export const createCheckInSchema = z.object({
   userId: z.string(),
   gymId: z.string(),
   userLatitude: z.number(),
   userLongitude: z.number(),
 })
 
-export type CheckInRequest = z.infer<typeof checkInSchema>
+export type CreateCheckInRequest = z.infer<typeof createCheckInSchema>
 
-export type CheckInResponse = {
+export type CreateCheckInResponse = {
   checkIn: CheckIn
 }

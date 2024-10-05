@@ -1,7 +1,7 @@
 import type {
   FetchNearbyGymRequest,
   FetchNearbyGymResponse,
-} from '~/modules/gym/dtos/fetch-nearby-gym.dto'
+} from '~/modules/gym/dtos/fetch-nearby.dto'
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
 
 export class FetchNearbyGymUseCase {

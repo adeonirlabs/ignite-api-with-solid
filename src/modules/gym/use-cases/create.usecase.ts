@@ -1,7 +1,7 @@
 import type {
   CreateGymRequest,
   CreateGymResponse,
-} from '~/modules/gym/dtos/create-gym.dto'
+} from '~/modules/gym/dtos/create.dto'
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
 
 export class CreateGymUseCase {

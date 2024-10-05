@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
-import { createGymSchema } from '~/modules/gym/dtos/create-gym.dto'
-import { createGymFactory } from '~/modules/gym/factories/create-gym.factory'
+import { createGymSchema } from '~/modules/gym/dtos/create.dto'
+import { createGymFactory } from '~/modules/gym/factories/create.factory'
 
 export class CreateGymController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

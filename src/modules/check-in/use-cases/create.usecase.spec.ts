@@ -1,18 +1,21 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { CheckInUseCase } from '~/modules/check-in/use-cases/check-in.usecase'
+import { CreateCheckInUseCase } from '~/modules/check-in/use-cases/create.usecase'
 import { InMemoryCheckInRepository } from '~/repositories/in-memory/check-in.repository'
 import { InMemoryGymRepository } from '~/repositories/in-memory/gym.repository'
 
 describe('Check-in Use Case', () => {
   let checkInRepository: InMemoryCheckInRepository
   let gymRepository: InMemoryGymRepository
-  let checkInUseCase: CheckInUseCase
+  let createCheckInUseCase: CreateCheckInUseCase
 
   beforeEach(async () => {
     checkInRepository = new InMemoryCheckInRepository()
     gymRepository = new InMemoryGymRepository()
-    checkInUseCase = new CheckInUseCase(checkInRepository, gymRepository)
+    createCheckInUseCase = new CreateCheckInUseCase(
+      checkInRepository,
+      gymRepository
+    )
 
     await gymRepository.create({
       id: 'gym-1',
@@ -31,7 +34,7 @@ describe('Check-in Use Case', () => {
   })
 
   it('should be able to check in', async () => {
-    const { checkIn } = await checkInUseCase.execute({
+    const { checkIn } = await createCheckInUseCase.execute({
       userId: 'user-1',
       gymId: 'gym-1',
       userLatitude: -29.297956,
@@ -52,7 +55,7 @@ describe('Check-in Use Case', () => {
     })
 
     await expect(
-      checkInUseCase.execute({
+      createCheckInUseCase.execute({
         userId: 'user-1',
         gymId: 'gym-2',
         userLatitude: -29.297956,
@@ -64,7 +67,7 @@ describe('Check-in Use Case', () => {
   it('should not be able to check in twice in the same day', async () => {
     vi.setSystemTime('2024-01-01T00:00:00.000Z')
 
-    await checkInUseCase.execute({
+    await createCheckInUseCase.execute({
       userId: 'user-1',
       gymId: 'gym-1',
       userLatitude: -29.297956,
@@ -72,7 +75,7 @@ describe('Check-in Use Case', () => {
     })
 
     await expect(
-      checkInUseCase.execute({
+      createCheckInUseCase.execute({
         userId: 'user-1',
         gymId: 'gym-1',
         userLatitude: -29.297956,
@@ -84,7 +87,7 @@ describe('Check-in Use Case', () => {
   it('should be able to check in twice in different days', async () => {
     vi.setSystemTime('2024-01-01T00:00:00.000Z')
 
-    await checkInUseCase.execute({
+    await createCheckInUseCase.execute({
       userId: 'user-1',
       gymId: 'gym-1',
       userLatitude: -29.297956,
@@ -93,7 +96,7 @@ describe('Check-in Use Case', () => {
 
     vi.setSystemTime('2024-01-02T00:00:00.000Z')
 
-    const { checkIn } = await checkInUseCase.execute({
+    const { checkIn } = await createCheckInUseCase.execute({
       userId: 'user-1',
       gymId: 'gym-1',
       userLatitude: -29.297956,

@@ -1,4 +1,4 @@
-import { ValidateCheckInUseCase } from '~/modules/check-in/use-cases/validate-check-in.usecase'
+import { ValidateCheckInUseCase } from '~/modules/check-in/use-cases/validate.usecase'
 import { PrismaCheckInRepository } from '~/repositories/prisma/check-in.repository'
 
 export function validateCheckInFactory(): ValidateCheckInUseCase {

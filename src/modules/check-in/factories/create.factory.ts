@@ -1,10 +1,10 @@
-import { CheckInUseCase } from '~/modules/check-in/use-cases/check-in.usecase'
+import { CreateCheckInUseCase } from '~/modules/check-in/use-cases/create.usecase'
 import { PrismaCheckInRepository } from '~/repositories/prisma/check-in.repository'
 import { PrismaGymRepository } from '~/repositories/prisma/gym.repository'
 
-export function checkInFactory(): CheckInUseCase {
+export function createCheckInFactory(): CreateCheckInUseCase {
   const checkInRepository = new PrismaCheckInRepository()
   const gymRepository = new PrismaGymRepository()
 
-  return new CheckInUseCase(checkInRepository, gymRepository)
+  return new CreateCheckInUseCase(checkInRepository, gymRepository)
 }

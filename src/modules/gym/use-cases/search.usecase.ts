@@ -1,7 +1,7 @@
 import type {
   SearchGymRequest,
   SearchGymResponse,
-} from '~/modules/gym/dtos/search-gym.dto'
+} from '~/modules/gym/dtos/search.dto'
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
 
 export class SearchGymUseCase {

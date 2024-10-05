@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { ConflictError } from '~/errors/conflict.error'
 import { NotFoundError } from '~/errors/not-found'
-import { ValidateCheckInUseCase } from '~/modules/check-in/use-cases/validate-check-in.usecase'
+import { ValidateCheckInUseCase } from '~/modules/check-in/use-cases/validate.usecase'
 import { InMemoryCheckInRepository } from '~/repositories/in-memory/check-in.repository'
 
 describe('Check-in Use Case', () => {

@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { FetchNearbyGymUseCase } from '~/modules/gym/use-cases/fetch-nearby-gym.usecase'
+import { FetchNearbyGymUseCase } from '~/modules/gym/use-cases/fetch-nearby.usecase'
 import { InMemoryGymRepository } from '~/repositories/in-memory/gym.repository'
 
 describe('Fetch Nearby Gym Use Case', () => {

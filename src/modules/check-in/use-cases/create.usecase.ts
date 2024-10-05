@@ -1,19 +1,19 @@
 import { NotFoundError } from '~/errors/not-found'
 import type {
-  CheckInRequest,
-  CheckInResponse,
-} from '~/modules/check-in/dtos/check-in.dto'
+  CreateCheckInRequest,
+  CreateCheckInResponse,
+} from '~/modules/check-in/dtos/create.dto'
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
 import type { GymRepository } from '~/repositories/interfaces/gym.interface'
 import { getDistance } from '~/utils/get-distance'
 
-export class CheckInUseCase {
+export class CreateCheckInUseCase {
   constructor(
     private readonly checkInRepository: CheckInRepository,
     private readonly gymRepository: GymRepository
   ) {}
 
-  async execute(data: CheckInRequest): Promise<CheckInResponse> {
+  async execute(data: CreateCheckInRequest): Promise<CreateCheckInResponse> {
     const { userId, gymId, userLatitude, userLongitude } = data
 
     const gym = await this.gymRepository.findById(gymId)

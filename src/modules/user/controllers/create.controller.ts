@@ -1,8 +1,8 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
 import { ConflictError } from '~/errors/conflict.error'
-import { createUserSchema } from '~/modules/user/dtos/create-user.dto'
-import { createUserFactory } from '~/modules/user/factories/create-user.factory'
+import { createUserSchema } from '~/modules/user/dtos/create.dto'
+import { createUserFactory } from '~/modules/user/factories/create.factory'
 
 export class CreateUserController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

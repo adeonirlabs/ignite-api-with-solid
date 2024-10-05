@@ -1,4 +1,4 @@
-import { FetchNearbyGymUseCase } from '~/modules/gym/use-cases/fetch-nearby-gym.usecase'
+import { FetchNearbyGymUseCase } from '~/modules/gym/use-cases/fetch-nearby.usecase'
 import { PrismaGymRepository } from '~/repositories/prisma/gym.repository'
 
 export function fetchNearbyGymFactory(): FetchNearbyGymUseCase {

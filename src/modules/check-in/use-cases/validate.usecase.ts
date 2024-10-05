@@ -4,7 +4,7 @@ import { NotFoundError } from '~/errors/not-found'
 import type {
   ValidateCheckInRequest,
   ValidateCheckInResponse,
-} from '~/modules/check-in/dtos/validate-check-in.dto'
+} from '~/modules/check-in/dtos/validate.dto'
 import type { CheckInRepository } from '~/repositories/interfaces/check-in.interface'
 
 export class ValidateCheckInUseCase {

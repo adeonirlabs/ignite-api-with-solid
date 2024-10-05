@@ -1,4 +1,4 @@
-import { SearchGymUseCase } from '~/modules/gym/use-cases/search-gym.usecase'
+import { SearchGymUseCase } from '~/modules/gym/use-cases/search.usecase'
 import { PrismaGymRepository } from '~/repositories/prisma/gym.repository'
 
 export function searchGymFactory(): SearchGymUseCase {
