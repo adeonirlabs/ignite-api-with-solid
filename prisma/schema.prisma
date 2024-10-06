@@ -8,8 +8,8 @@ datasource db {
 }
 
 enum Role {
-  ADMIN
-  MEMBER
+  admin
+  member
 }
 
 model User {
@@ -17,7 +17,7 @@ model User {
   name      String
   email     String   @unique
   password  String
-  role      Role     @default(MEMBER)
+  role      Role     @default(member)
   createdAt DateTime @default(now()) @map("created_at")
 
   CheckIns CheckIn[]
