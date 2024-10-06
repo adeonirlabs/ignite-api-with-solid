@@ -14,7 +14,7 @@ describe('Fetch Nearby Gyms controller', () => {
   })
 
   it('should be able to fetch nearby gyms', async () => {
-    const { token } = await createAuthUser(app)
+    const { token } = await createAuthUser(app, 'admin')
 
     // Nearby gym
     await request(app.server)
