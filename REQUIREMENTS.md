@@ -17,12 +17,12 @@
 - [x] O usuário não pode fazer 2 check-ins no mesmo dia
 - [x] O usuário não pode fazer check-in se não estiver a 100 metros da academia
 - [x] O check-in só pode ser validado até 20 minutos após ser criado
-- [ ] O check-in só pode ser validado por um administrador
-- [ ] A academia só pode ser cadastrada por um usuário administrador
+- [x] O check-in só pode ser validado por um administrador
+- [x] A academia só pode ser cadastrada por um usuário administrador
 
 # Requisitos não funcionais
 
 - [x] A senha do usuário precisa estar criptografada
 - [x] Os dados da aplicação precisam estar persistidos em um banco de dados
 - [x] Todas as listas de dados precisam estar paginadas com 20 itens por página
-- [ ] O usuário deve ser identificado pelo token
+- [x] O usuário deve ser identificado pelo token JWT
