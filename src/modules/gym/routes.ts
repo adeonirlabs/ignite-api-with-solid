@@ -16,7 +16,7 @@ export async function gymRoutes(app: FastifyInstance) {
   // Private routes
   app.post(
     '/gyms',
-    { onRequest: [verifyUserRole('ADMIN')] },
+    { onRequest: [verifyUserRole('admin')] },
     createGymController.handle
   )
   app.get('/gyms/nearby', fetchNearbyGymController.handle)
