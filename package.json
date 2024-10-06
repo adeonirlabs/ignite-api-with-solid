@@ -49,5 +49,14 @@
   },
   "engines": {
     "node": ">= 20"
-  }
+  },
+  "packageManager": "bun@1.0.13",
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "prisma",
+    "@prisma/client",
+    "@prisma/engines",
+    "esbuild",
+    "vite"
+  ]
 }
