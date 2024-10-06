@@ -64,8 +64,28 @@ describe('Check-in Use Case', () => {
     ).rejects.toBeInstanceOf(Error)
   })
 
+  it('should not be able to check in on a different gym', async () => {
+    await gymRepository.create({
+      id: 'gym-2',
+      name: 'Gym 2',
+      description: null,
+      phone: null,
+      latitude: -29.295474,
+      longitude: -51.500698,
+    })
+
+    await expect(
+      createCheckInUseCase.execute({
+        userId: 'user-1',
+        gymId: 'gym-2',
+        userLatitude: -29.297956,
+        userLongitude: -51.500644,
+      })
+    ).rejects.toBeInstanceOf(Error)
+  })
+
   it('should not be able to check in twice in the same day', async () => {
-    vi.setSystemTime('2024-01-01T00:00:00.000Z')
+    vi.setSystemTime(new Date(2024, 0, 1, 8, 0, 0))
 
     await createCheckInUseCase.execute({
       userId: 'user-1',
@@ -85,7 +105,7 @@ describe('Check-in Use Case', () => {
   })
 
   it('should be able to check in twice in different days', async () => {
-    vi.setSystemTime('2024-01-01T00:00:00.000Z')
+    vi.setSystemTime(new Date(2024, 0, 1, 8, 0, 0))
 
     await createCheckInUseCase.execute({
       userId: 'user-1',
@@ -94,7 +114,7 @@ describe('Check-in Use Case', () => {
       userLongitude: -51.500644,
     })
 
-    vi.setSystemTime('2024-01-02T00:00:00.000Z')
+    vi.setSystemTime(new Date(2024, 0, 2, 8, 0, 0))
 
     const { checkIn } = await createCheckInUseCase.execute({
       userId: 'user-1',
