@@ -19,6 +19,7 @@
     "preinstall": "cd packages/vitest-environment-prisma && bun link && cd ../.."
   },
   "dependencies": {
+    "@fastify/cookie": "10.0.1",
     "@fastify/jwt": "9.0.1",
     "@prisma/client": "5.20.0",
     "bcryptjs": "2.4.3",
