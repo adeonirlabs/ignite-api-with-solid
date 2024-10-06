@@ -6,7 +6,7 @@ export const envSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'production', 'test'])
     .default('development'),
-  BASE_URL: z.string().url(),
+  BASE_URL: z.string().url().default('http://localhost:3333'),
   DATABASE_URL: z.string().url(),
   HOST: z.string().default('0.0.0.0'),
   PORT: z.coerce.number().default(3333),
