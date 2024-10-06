@@ -9,14 +9,16 @@
     "start": "node dist/server.js",
     "lint": "biome check src",
     "typecheck": "tsc --noEmit",
+    "test:coverage": "vitest run --coverage",
     "test:unit": "vitest run --config ./vitest.config.ts",
     "test:unit:watch": "vitest --config ./vitest.config.ts",
     "test:e2e": "vitest run --config ./vitest.config.e2e.ts",
     "test:e2e:watch": "vitest --config ./vitest.config.e2e.ts",
-    "test:coverage": "vitest run --coverage",
+    "pretest:e2e": "run-s test:link-prisma-environment test:install-prisma-environment",
+    "test:link-prisma-environment": "cd packages/vitest-environment-prisma && bun link",
+    "test:install-prisma-environment": "bun link vitest-environment-prisma",
     "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio",
-    "preinstall": "cd packages/vitest-environment-prisma && bun link && cd ../.."
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@fastify/cookie": "10.0.1",
@@ -41,8 +43,7 @@
     "tsup": "8.3.0",
     "typescript": "5.6.2",
     "vite-tsconfig-paths": "5.0.1",
-    "vitest": "2.1.2",
-    "vitest-environment-prisma": "link:vitest-environment-prisma"
+    "vitest": "2.1.2"
   },
   "prisma": {
     "schema": "prisma/schema.prisma"
