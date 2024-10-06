@@ -38,8 +38,8 @@ Este é um projeto de uma Rest API desenvolvido durante o Ignite da Rocketseat, 
 Clone o repositório e instale as dependências.
 
 ```bash
-git clone https://github.com/adeonirlabs/rocketseat-api-with-solid.git
-cd rocketseat-api-with-solid
+git clone https://github.com/adeonirlabs/ignite-api-with-solid.git
+cd ignite-api-with-solid
 bun install
 ```
 
